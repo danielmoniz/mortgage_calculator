@@ -11,7 +11,7 @@ market_growth = 1.05 # assume 5% market growth
 
 total_spend = {
     30: monthly_payment[30] * 12 * 30,
-    20: monthly_payment[20] * 12 * 30,
+    20: monthly_payment[20] * 12 * 20,
 }
 
 spend_difference = total_spend[20] - total_spend[30]
