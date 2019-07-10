@@ -17,14 +17,18 @@ total_spend = {
 spend_difference = total_spend[20] - total_spend[30]
 
 print("Total spend:")
-print("   30 years: " + str(total_spend[30]))
-print("   20 years: " + str(total_spend[20]))
+print("   30 years: $" + str(total_spend[30]))
+print("   20 years: $" + str(total_spend[20]))
 print("Additional spent with 30 year mortgage: " + str(spend_difference))
 
-print('-' * 10)
+print('\n' + '-' * 10)
+
+
 
 print("Strategy: 20 year mortgage, followed by 10 years of investing the 30 year payment amount into the market.")
+
 print("20 year mortgage rate: ${}".format(monthly_payment[20]))
+print("Total spent: ${}".format(total_spend[20]))
 market_growth_sum = 0
 for years_invested in reversed(range(1, 11)):
     market_growth_sum += market_growth ** years_invested
@@ -42,8 +46,21 @@ print("Total money for comparison (mortgage + 10 years of not paying + investmen
 
 
 
+print('\n' + '-' * 10)
 
 
-print('-' * 10)
 
 print("Strategy: 30 year mortgage, all while investing the extra cash flow into the market.")
+
+print("30 year mortgage rate: ${}".format(monthly_payment[30]))
+print("Total spent: ${}".format(total_spend[30]))
+print("Amount saved monthly: ${}".format(spend_difference))
+
+market_growth_sum = 0
+for years_invested in reversed(range(1, 31)):
+    market_growth_sum += market_growth ** years_invested
+
+print("Market growth factor over {} years: {}".format(years_invested, market_growth_sum))
+total_investment_revenue = payment_difference * 12 * market_growth_sum
+print("Total investment made: ${}".format(total_investment_revenue))
+print("Total money for comparison (lower mortgage for 30 years + 30 years of investing difference): \n ==> ${}".format(total_investment_revenue - total_spend[30]))
